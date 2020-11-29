@@ -1,5 +1,5 @@
 import { Component } from 'react';
-export default class News extends Component {
+export default class Image extends Component {
     constructor(prpos) {
       super(prpos);
       this.state = {
@@ -11,7 +11,7 @@ export default class News extends Component {
   
     componentDidMount() {
       //componentDidMount()
-      fetch("http://localhost:5000/base")
+      fetch("http://localhost:5000/image")
         .then(res => res.json())
         .then(
           (result) => {

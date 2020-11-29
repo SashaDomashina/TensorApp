@@ -24,14 +24,14 @@ def create_app():
 
 
     @app.route('/video')
-    def get_data_base():
+    def get_data_video():
         video_news = list(mongo.db.news.find({"format":"mp4"}))
         return json.dumps(video_news,default=json_util.default)
 
 
-    @app.route('/base')
-    def get_data_video():
-        data_news = list(mongo.db.news.find())
+    @app.route('/image')
+    def get_data_image():
+        data_news = list(mongo.db.news.find({"format":"image"}))
         return json.dumps(data_news,default=json_util.default)
         
     return app

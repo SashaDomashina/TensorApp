@@ -1,6 +1,6 @@
 import Time from './components/Time/Time'
 import Form from './components/Form/Form'
-import News from './components/News/News'
+import Image from './components/Image/Image'
 import Videocheck from './components/Videocheck/Videocheck'
 
 
@@ -25,7 +25,7 @@ export default class App extends Component {
     <BrowserRouter>
     <Route path="/time" component={Time} />
     <Route path="/form" component={Form} />
-    <Route path="/news" component={News} />
+    <Route path="/image" component={Image} />
     <Route path="/video" component={Videocheck} />
 
 
