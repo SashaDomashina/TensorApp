@@ -8,7 +8,7 @@ from bson import json_util
 
 def create_app():
     app = Flask(__name__)
-    app.config["MONGO_URI"] = "mongodb+srv://ilyagusa:RIcLYiNot1gQZTF0@mydata.zvsdf.mongodb.net/data_news?retryWrites=true&w=majority"
+    app.config["MONGO_URI"] = "mongodb+srv://ilyagusa:BBUCix57dICRfZqv@mydata.zvsdf.mongodb.net/data_news?retryWrites=true&w=majority"
     mongo = PyMongo()
     mongo.init_app(app)
 
@@ -21,11 +21,17 @@ def create_app():
     def get_current_time():
         return {'time' : time.ctime()}
 
-    
-    @app.route('/base')
+
+
+    @app.route('/video')
     def get_data_base():
+        video_news = list(mongo.db.news.find({"format":"mp4"}))
+        return json.dumps(video_news,default=json_util.default)
+
+
+    @app.route('/base')
+    def get_data_video():
         data_news = list(mongo.db.news.find())
-    
         return json.dumps(data_news,default=json_util.default)
         
     return app

@@ -1,6 +1,9 @@
 import Time from './components/Time/Time'
 import Form from './components/Form/Form'
 import News from './components/News/News'
+import Videocheck from './components/Videocheck/Videocheck'
+
+
 import { Component } from 'react';
 import ReactPlayer from 'react-player'
 import './App.css';
@@ -23,6 +26,10 @@ export default class App extends Component {
     <Route path="/time" component={Time} />
     <Route path="/form" component={Form} />
     <Route path="/news" component={News} />
+    <Route path="/video" component={Videocheck} />
+
+
+    
     </BrowserRouter>
     )}
 }
