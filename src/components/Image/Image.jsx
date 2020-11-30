@@ -11,7 +11,7 @@ export default class Image extends Component {
   
     componentDidMount() {
       //componentDidMount()
-      fetch("http://localhost:5000/image")
+      fetch("http://localhost:5000/data_image/data")
         .then(res => res.json())
         .then(
           (result) => {

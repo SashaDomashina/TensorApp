@@ -1,37 +1,21 @@
 import time
 import json
 from flask import Flask
+from flask import Blueprint
 from flask_cors import CORS, cross_origin
 from flask_pymongo import PyMongo
 from bson import json_util
-#    
+from routes.image import image
+from routes.video import video
+from database.db import initialize_db
+from database.db import mongo
 
 def create_app():
     app = Flask(__name__)
     app.config["MONGO_URI"] = "mongodb+srv://ilyagusa:BBUCix57dICRfZqv@mydata.zvsdf.mongodb.net/data_news?retryWrites=true&w=majority"
-    mongo = PyMongo()
-    mongo.init_app(app)
-
-
-    #Cross-origin resource sharing
+    app.register_blueprint(image, url_prefix='/data_image')
+    app.register_blueprint(video, url_prefix='/data_video')
     CORS(app)
-
-    @app.route('/')
-    @app.route('/time')
-    def get_current_time():
-        return {'time' : time.ctime()}
-
-
-
-    @app.route('/video')
-    def get_data_video():
-        video_news = list(mongo.db.news.find({"format":"mp4"}))
-        return json.dumps(video_news,default=json_util.default)
-
-
-    @app.route('/image')
-    def get_data_image():
-        data_news = list(mongo.db.news.find({"format":"image"}))
-        return json.dumps(data_news,default=json_util.default)
+    initialize_db(app)
         
     return app

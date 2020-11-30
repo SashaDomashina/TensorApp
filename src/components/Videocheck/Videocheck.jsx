@@ -13,7 +13,7 @@ export default class Videocheck extends Component {
   
     componentDidMount() {
       //componentDidMount()
-      fetch("http://localhost:5000/video")
+      fetch("http://localhost:5000/data_video/data")
         .then(res => res.json())
         .then(
           (result) => {
